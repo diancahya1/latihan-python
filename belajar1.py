@@ -2,7 +2,7 @@
 data_int= 9
 print ("data =", data_int, "tipe=", type(data_int))
 
-
+#jadi kalo mau ganti tipe tinggal tulis aja di depannya
 data_str = str(data_int)
 data_float = float(data_int)
 data_boolean = bool(data_int)
@@ -11,7 +11,7 @@ print ("data =", data_str, "tipe=", type(data_str))
 print ("data =", data_float, "tipe=", type(data_float))
 print ("data =", data_boolean, "tipe=", type(data_boolean))
 
-# input dari user dengan tipe data bool
+# input dari user dengan tipe data bool, ini hampir mirip kayak input biasa tapi ada tambahan bool di depannya
 data_boolean = bool(int(input("masukkan angka :")))
 print ("data =", data_boolean," tipe=", type (data_boolean))
 
