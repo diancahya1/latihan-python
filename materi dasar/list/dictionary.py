@@ -1,154 +1,72 @@
-#dictionary
-print ("Selamat datang di program dictionary")
-#penjelasan singkat
-print ("Program ini akan membantu anda untuk menyimpan data dalam bentuk dictionary")   
-print ("Anda bisa memasukkan data dengan format key:value")
-print ("Contoh: nama:John, umur:30, kota:Jakarta")
-print ("Anda bisa memasukkan data sebanyak yang anda mau")
-print ("Untuk keluar dari program ini, ketik 'exit' pada input")
-#inisialisasi dictionary
-data_dict = {}
-while True:
-    #input data
-    data_input = input("Masukkan data (key:value) atau ketik 'exit' untuk keluar: ")
-    if data_input.lower() == 'exit':
-        break
-    try:
-        key, value = data_input.split(':')
-        data_dict[key.strip()] = value.strip()
-    except ValueError:
-        print("Format salah! Gunakan format key:value")
-        continue
-#tampilkan data
-print("\nData yang telah dimasukkan:")
-for key, value in data_dict.items():
-    print(f"{key}: {value}")
-#dictionary dengan data campuran
-data_mixed = {
-    "nama": "John",
-    "umur": 30,
-    "kota": "Jakarta",
-    "hobi": ["membaca", "bersepeda"],
-    "is_student": False
-}
-print("\nData campuran dalam dictionary:")
-for key, value in data_mixed.items():
-    print(f"{key}: {value}")
-#dictionary dengan data berulang
-data_repeated = {
-    "nama": "John",
-    "umur": 30,
-    "kota": "Jakarta",
-    "hobi": ["membaca", "bersepeda"],
-    "is_student": False,
-    "hobi": ["membaca", "bersepeda", "menulis"] # key 'hobi
-    # akan diupdate dengan nilai baru
-}
-print("\nData dengan key berulang dalam dictionary:")   
-for key, value in data_repeated.items():
-    print(f"{key}: {value}")
-#dictionary dengan data tidak berurutan
-data_unordered = {
-    "kota": "Jakarta",
-    "nama": "John",
-    "umur": 30,
-    "hobi": ["membaca", "bersepeda"]
-}
-print("\nData tidak berurutan dalam dictionary:")
-for key, value in data_unordered.items():
-    print(f"{key}: {value}")
-#dictionary dengan data berisi list
-data_with_list = {
-    "nama": "John",
-    "umur": 30,
-    "kota": "Jakarta",
-    "hobi": ["membaca", "bersepeda"]
-}
-print("\nData dengan list dalam dictionary:")
-for key, value in data_with_list.items():
-    print(f"{key}: {value}")
-#dictionary dengan data berisi set
-data_with_set = {  
-    "nama": "John",
-    "umur": 30,
-    "kota": "Jakarta",
-    "hobi": {"membaca", "bersepeda"} # set tidak berurutan
-}   
-print("\nData dengan set dalam dictionary:")
-for key, value in data_with_set.items():
-    print(f"{key}: {value}")
+#dictionary struktur yang memiliki pasangan key dan value   
+#key is like name or something pokoknya yang ada di bagian depan
+#value is like the answer of key 
 
-print ("\n\n","="*20)
+# bentuk dasar dari dictionary :
+# dictionary = {key : value}
 
-#operator pada dictionary
-data_dict = {
-    "nama": "John",
-    "umur": 30,
-    "kota": "Jakarta"
+# ini contoh dari dictionary
+
+mahasiswa = {
+    "nama": "Budi",
+    "umur": 20
+    ,
+    "jurusan": "Informatika"
 }
 
-#panjang
-print ("panjang dictionary:", len(data_dict))
+# dan dictionary selalu menggunakan key untuk memanggil data 
 
-# mengecek apakah key ada atau tidak
-key = "cup"
-checkey= key in data_dict
-print (f"apakah {key} ada di data_dict ?",{checkey})
+# contoh, (ini datanya berdasarkan data di atas ya)
+print (mahasiswa ["nama"])
+print (mahasiswa ["umur"]) 
 
-# mengakses nilai dengan key
-key = "nama"   
-if key in data_dict:
-    print(f"Nilai dari {key} adalah: {data_dict[key]}")
-else:
-    print(f"{key} tidak ditemukan dalam dictionary")
+# penggunaan get yaitu untuk memastikan apkah key itu ada di dalam dictionary atau tidak
+# get = untuk memastikan dan tidak terjadi eror. contohnya :
+print (mahasiswa.get("alamat", "data tidak di temukan")) # contoh data yang tidak di temukan di dictionary
 
-# mengupdate data
-data_dict ["umur"] = 20
-print (data_dict)
-# atau bisa juga dengan cara 
-data_dict.update ({"nama":"ucup"})
-print (data_dict)
+#dan jika ingin menambahkan data/key baru ke dictionary
+mahasiswa ["angkatan"]= 2023
+mahasiswa ["jurusan"]= "teknik_telekomunikasi"
+print (mahasiswa["angkatan"])
+print (mahasiswa ["jurusan"])
+print (mahasiswa.get("umur", "data belum diisi"))
 
-#menghapus data
+print("---------------******-----------------")
+# menghapus data/key dalam dictionary (ada 2 cara)
 
-del data_dict ["kota"]
-print (data_dict)
+del mahasiswa["angkatan"]
+print (mahasiswa)
 
-print ("\n\n","="*20)
+# cara ke 2 :
+mahasiswa.pop("umur")
+print (mahasiswa)
 
-teman = {
-    "cp":"ucup",
-    "tp":"tobi",
-    "hp":"hendra",
-}
+print ("------------*******-------------")
 
-#looping dic, yg keluar key nya
-for key in teman :
-    print (key)
-
-#looping dic, yg keluar value nya
-
-for value in teman.values():
-    print(value)
-#looping dic, yg keluar key dan value nya
-for key, value in teman.items():
-    print(f"{key}: {value}")
-
-
-#dict_copy
-
-print("\n\n","="*20)
-# membuat dictionary
+# ada juga dictionary dalam dictionary(nested dictionary)
 data = {
-    "a": 1,
-    "b": 2,
+    1001:{"nama" : "susi", "umur" : " 23"},
+    1002:{"nama" : "lila" , "umur" :"11" }
 }
-# menyalin dictionary
-data_baru = data.copy()
-print("Data asli:", data)
-print("Data baru:", data_baru)
-# mengubah data baru
-data_baru["a"] = 3
-print("Data baru setelah diubah:", data_baru)
-print("Data asli tetap:", data)
+print (data [1001]["nama"])
+
+print ("------------********------------")
+#looping di dictionary
+mahasiswa = {
+    "nama": "Budi",
+    "umur": 20,
+    "jurusan": "Informatika"
+}
+
+# looping hanya key nya saja
+for key in mahasiswa:
+    print(key)
+
+# looping hanya value saja
+for value in mahasiswa.values():
+    print(value)
+    
+# looping key dan value sekaligus
+for key,value in mahasiswa.items():
+    print (f"{key}",{value})
 
